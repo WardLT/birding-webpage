@@ -47,15 +47,16 @@ class BirdImage(BaseModel):
             coordinate = None
             if ExifTags.IFD.GPSInfo in exif:
                 gps_data = exif.get_ifd(ExifTags.IFD.GPSInfo)
-                coordinate = [
-                    gps_data[ExifTags.GPS.GPSLatitude],
-                    gps_data[ExifTags.GPS.GPSLongitude],
-                    gps_data.get(ExifTags.GPS.GPSAltitude, None)
-                ]
+                if ExifTags.GPS.GPSLatitude in gps_data:
+                    coordinate = [
+                        gps_data[ExifTags.GPS.GPSLatitude],
+                        gps_data[ExifTags.GPS.GPSLongitude],
+                        gps_data.get(ExifTags.GPS.GPSAltitude, None)
+                    ]
 
-                # Convert the coordinates to degrees
-                for i, x in enumerate(coordinate[:2]):
-                    coordinate[i] = float(x[0] + x[1] / 60 + x[2] / 3600)
+                    # Convert the coordinates to degrees
+                    for i, x in enumerate(coordinate[:2]):
+                        coordinate[i] = float(x[0] + x[1] / 60 + x[2] / 3600)
 
         # Make the record
         return cls(

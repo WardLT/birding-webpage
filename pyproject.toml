@@ -36,3 +36,5 @@ test = [
     'pytest-cov',
 ]
 
+[project.scripts]
+birdweb-index = "birdweb.index:cli_main"

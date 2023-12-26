@@ -3,7 +3,7 @@ from shutil import copy
 
 from pytest import fixture
 
-from birdweb.index import index_images
+from birdweb.index import index_images, cli_main
 
 
 @fixture
@@ -24,3 +24,9 @@ def test_index(indexable_dir):
     assert record.species == 'Brown Thrasher'
     assert record.family == 'Mimidae'
     assert record.order == 'Passeriformes'
+
+
+def test_cli(indexable_dir, tmpdir, capsys):
+    output_path = Path(tmpdir) / 'birds.json'
+    cli_main(['--output-path', str(output_path), str(indexable_dir)])
+    assert output_path.stat().st_size > 0
