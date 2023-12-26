@@ -1,0 +1,37 @@
+[project]
+name = "birdweb"
+version = "0.0.1"
+authors = [
+    { name = "Logan Ward", email = "lward@anl.gov" },
+]
+description = 'Plot the birds I have managed to photograph.'
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+keywords = ["Birding", "Photography"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "fastapi",
+  "tqdm"
+]
+
+[tool.setuptools.packages.find]
+include = ['birdweb*']
+
+[project.urls]
+repository = "https://github.com/globus-labs/faster-molecular-hessians"
+
+[project.optional-dependencies]
+test = [
+    'flake8',
+    'pytest',
+    'pytest-timeout',
+    'pytest-cov',
+]
+
