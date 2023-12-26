@@ -27,7 +27,7 @@ jobs:
       env:
         BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       run: |
-        pytest --cov=birdweb birdweb
+        pytest --cov=birdweb tests
     - name: Coveralls
       run: |
         pip install coveralls
