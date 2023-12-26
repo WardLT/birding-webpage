@@ -32,6 +32,8 @@ class BirdImage(BaseModel):
 
         Args:
             image_path: Path to the image file
+        Raises:
+            (UnidentifiedImageError) If the image fails to read
         Returns:
             An image record using the metadata extracted from this image
         """
